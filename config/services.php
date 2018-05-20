@@ -35,4 +35,17 @@ return [
         'secret' => env('STRIPE_SECRET'),
     ],
 
+    'google' => [
+		'client_id' => '616515585823-9eh5bhtla6kp7fcvr90rok3lnmrjtadv.apps.googleusercontent.com',         // Your GitHub Client ID
+		
+		'client_secret' => 'mRyf5jExst_b3ZM5dkYKtDf_', // Your GitHub Client Secret
+		
+		'redirect' => 'http://localhost/LaravelLearning2/public/homesite/login/google/callback',
+    ],	    
+    
+    'facebook' => [
+        'client_id' => '165988420687268',         // Your GitHub Client ID
+        'client_secret' => '6e435545e7ad9a717aa5a3cc8d94a7ea', // Your GitHub Client Secret
+        'redirect' => 'http://localhost/LaravelLearning2/public/homesite/login/facebook/callback',
+    ],
 ];

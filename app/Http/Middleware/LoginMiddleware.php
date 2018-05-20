@@ -16,13 +16,12 @@ class LoginMiddleware
      */
     public function handle($request, Closure $next)
     {
-        //return $next($request);
-		session_start();
-		if(!isset($_SESSION['user_data'])){
-			return redirect()->route('getLogin');
-		}
-		else{
-			return $next($request);
-		}
+  		session_start();
+  		if(!isset($_SESSION['user_data'])){
+  			return redirect()->route('getLogin');
+  		}
+  		else{
+  			return $next($request);
+  		}
     }
 }

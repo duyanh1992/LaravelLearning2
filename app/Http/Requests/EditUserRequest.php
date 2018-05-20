@@ -28,14 +28,13 @@ class EditUserRequest extends FormRequest
            'txtPass'=>'required',
            'txtRePass'=>'required|same:txtPass',
            'txtEmail'=>'required|email',
-		   
+
         ];
     }
-	
+
 	public function messages(){
 		return [
 			'txtUser.required'=>'Username is required !!!',
-			'txtUser.unique'=>'This username is existed !!!',
 			'txtPass.required'=>'Password is required !!!',
 			'txtRePass.required'=>'RePassword is required !!!',
 			'txtRePass.same'=>'RePassword and Password are not match !!!',

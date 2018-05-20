@@ -31,16 +31,17 @@
                 <div class="login-panel panel panel-default">
                     <div class="panel-heading">
                         <h3 class="panel-title">Please Sign In</h3>
+            <!-- Show validation alert message  -->
 						@include('admin.blocks.validation_error')
-						@if(Session::get('message'))
-								<div class="alert alert-{!! Session::get('type') !!}">
-									{!! Session::get('message') !!}
-								</div>
-						@endif
+            <!--End show validation alert message  -->
+
+            <!-- Show alert message  -->
+            @include('admin.blocks.message')
+            <!-- End show alert message -->
                     </div>
                     <div class="panel-body">
                         <form role="form" action="{!! route('postLogin') !!}" method="POST">
-                        <input type="hidden" name="_token" value="{!! csrf_token() !!}"/>    
+                        <input type="hidden" name="_token" value="{!! csrf_token() !!}"/>
 							<fieldset>
                                 <div class="form-group">
                                     <input class="form-control" placeholder="Username" name="username" type="text" autofocus>

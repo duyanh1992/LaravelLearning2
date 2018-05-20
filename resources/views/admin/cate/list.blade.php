@@ -4,11 +4,9 @@
 @section('content')
 
 <div class="col-md-12">
-@if(Session::get('message'))
-	<div class="alert alert-{!! Session::get('type') !!}" id="addingMessage">
-		{!! Session::get('message') !!}
-	</div>
-@endif	
+	<!-- Show alert message  -->
+	@include('admin.blocks.message')
+	<!-- End show alert message -->
 </div>
 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
 	<thead>
@@ -27,6 +25,7 @@
 			<td>{!! $index !!}</td>
 			<td>{!! $item->name !!}</td>
 			<td>
+				<!-- etting showed cate parent name -->
 			<?php
 				$cateParentName = DB::table('cates')->select('name')
 								  ->where('id', $item->parent_id)
@@ -37,7 +36,8 @@
 				else{
 					echo $cateParentName->name;
 				}
-			?>	
+			?>
+			 <!-- End setting showed cate parent name -->
 			</td>
 			<td class="center"><i class="fa fa-trash-o fa-fw"></i><a onclick="return delConfirm();"; href="{!! route('getDelCate', $item['id']) !!}"> Delete</a></td>
 			<td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="{!! route('getEditCate', $item['id']) !!}">Edit</a></td>
@@ -45,5 +45,5 @@
 		<?php $index++;?>
 		@endforeach
 	</tbody>
-</table>    
+</table>
 @endsection()

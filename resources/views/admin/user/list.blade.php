@@ -2,20 +2,12 @@
 @section('pageHeader', 'User')
 @section('function', 'List')
 @section('content')
-<table class="table table-striped table-bordered table-hover" id="dataTables-example">
 @if(Session::get('message'))
-		<div class="alert alert-{!! Session::get('type') !!}">
-			{!! Session::get('message') !!}
-		</div>
+	<div id="test" class="alert alert-{!! Session::get('type') !!}">
+		{!! Session::get('message') !!}
+	</div>
 @endif
-<?php 
-// if(isset($_SESSION['user_data'])){
-	// print_r($_SESSION['user_data']) ;
-// }	
-// else{
-	// echo "NO";
-// }
-?>
+<table class="table table-striped table-bordered table-hover" id="dataTables-example">
 	<thead>
 		<tr align="center">
 			<th>ID</th>

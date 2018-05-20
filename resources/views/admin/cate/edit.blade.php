@@ -10,7 +10,8 @@
 			<label>Category Parent</label>
 			<select class="form-control" name="sltCate">
 				<option value="0">Please Choose Category</option>
-				<?php 
+				<?php
+					// Show category select box:
 					parentCate($getListCate, 0, '', $parent_id);
 				?>
 			</select>
@@ -31,9 +32,9 @@
 			<label>Category Description</label>
 			<textarea class="form-control" rows="3" name="txtDescription">{!! old('txtDescription', isset($getCateById->description) ? $getCateById->description : null) !!}</textarea>
 		</div>
-		
+
 		<button type="submit" name="submit" class="btn btn-default">Category Edit</button>
 		<button type="reset" class="btn btn-default">Reset</button>
 	<form>
-</div>   
-@endsection()         
+</div>
+@endsection()

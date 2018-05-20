@@ -1,8 +1,8 @@
 <?php
-if(!isset($_SESSION)) 
-{ 
-    session_start(); 
-} 
+if(!isset($_SESSION))
+{
+    session_start();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -31,10 +31,10 @@ if(!isset($_SESSION))
 
     <!-- DataTables Responsive CSS -->
     <link href="{{url('admin/bower_components/datatables-responsive/css/dataTables.responsive.css') }}" rel="stylesheet">
-	
+
     <link href="{{url('css/myStyle.css') }}" rel="stylesheet">
-	
-	
+
+
 	<script>
       var baseURL = "{!! url('/') !!}";
     </script>
@@ -64,7 +64,7 @@ if(!isset($_SESSION))
                     <ul class="dropdown-menu dropdown-user">
                         <li><a href="#"><i class="fa fa-user fa-fw"></i>{!! Auth::user()->username !!}</a>
                         </li>
-                       
+
                         <li class="divider"></li>
                         <li><a href="{!! route('getLogout') !!}"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                         </li>
@@ -99,7 +99,7 @@ if(!isset($_SESSION))
                                     <a href="{!! url('admin/admin-content/cate/getListCate') !!}">List Category</a>
                                 </li>
                                 <li>
-                                    <a href="{!! url('admin/cate/getAddCate') !!}">Add Category</a>
+                                    <a href="{!! url('admin/admin-content/cate/getAddCate') !!}">Add Category</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -145,7 +145,7 @@ if(!isset($_SESSION))
                         </h1>
                     </div>
                     <!-- /.col-lg-12 -->
-                    <!------ Main Content ------->					
+                    <!------ Main Content ------->
 						@yield('content')
 					<!------ End Main Content ------->
                 </div>
@@ -175,13 +175,13 @@ if(!isset($_SESSION))
     <script src="{{url('admin/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js') }}"></script>
 
     <!-- Page-Level Demo Scripts - Tables - Use for reference -->
-   
+
 	<script type="text/javascript" src="{{url('admin/js/myScript.js') }}"></script>
-	
+
 	<!---------------- Put CKEditor and CKFinder link--------------------------->
 	<script src="{{url('templateEditor/ckeditor/ckeditor.js')}}"></script>
     <script src="{{url('templateEditor/ckfinder/ckfinder.js')}}"></script>
-	
+
 	<!---------------- Put CKEditor and CKFinder into page --------------------------->
 	<script>
         var editor = CKEDITOR.replace('editor1', {

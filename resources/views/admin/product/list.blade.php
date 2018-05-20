@@ -3,11 +3,9 @@
 @section('function', 'List')
 @section('content')
 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
-@if(Session::get('message'))
-	<div class="alert alert-{!! Session::get('type') !!}">	
-		{!! Session::get('message') !!}
-	</div>
-@endif
+	<!-- Show alert message  -->
+	@include('admin.blocks.message')
+	<!-- End show alert message -->
 	<thead>
 		<tr align="center">
 			<th>ID</th>
@@ -29,18 +27,19 @@
 			<td><?php echo Carbon\Carbon::createFromTimeStamp(strtotime($item->created_at))->diffForHumans();?></td>
 			<td>
 			<?php
+				// Select cate name by cate id
 				$cateName = DB::table('cates')
-							->select('name')
-							->where('id',$item->cate_id)
-							->first();
-				echo $cateName->name;			
+												->select('name')
+												->where('id',$item->cate_id)
+												->first();
+				echo $cateName->name;
 			?>
 			</td>
-			<td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="{!! route('getDelPrd', $item->id) !!}" onclick="return delConfirm();"> Delete</a></td>
+			<td class="center"><i class="fa fa-trash-o fa-fw"></i><a href="{!! route('getDelPrd', $item->id) !!}" onclick="return delConfirm();"> Delete</a></td>
 			<td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="{!! route('getEditPrd', $item->id) !!}">Edit</a></td>
-		</tr>      
-		<?php $index++; ?>		
-		@endforeach		
+		</tr>
+		<?php $index++; ?>
+		@endforeach
 	</tbody>
 </table>
-@endsection()  
+@endsection()
