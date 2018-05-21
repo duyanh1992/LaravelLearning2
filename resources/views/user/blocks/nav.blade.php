@@ -11,7 +11,7 @@
 				<li><a href="{!! route('getAllPrdByCate', $item1->id) !!}">{!! $item1->name !!}</a>
 					<div>
 						<?php
-							// Get parent cate:
+							// Get child cate:
 							$childCate = DB::table('cates')->where('parent_id', $item1->id)->get();
 						?>
 						<ul>

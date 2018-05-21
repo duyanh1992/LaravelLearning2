@@ -48,20 +48,20 @@
                 <section id="categorygrid">
                   <ul class="thumbnails grid">
 				  @foreach($prd as $item)
-                    <li class="col-lg-4 col-sm-6 text-center">
-                      <a class="prdocutname" href="{!! route('getDetailPrd', [$item->id, $item->cate_id]) !!}">{!! $item->name !!}</a>
-                      <div class="thumbnail">
-                        <span class="sale tooltip-test">Sale</span>
-                        <a href="{!! route('getDetailPrd', [$item->id, $item->cate_id]) !!}"><img alt="" src="{!! asset('image/'.$item->image) !!}"></a>
+            <li class="col-lg-4 col-sm-6 text-center">
+              <a class="prdocutname" href="{!! route('getDetailPrd', [$item->id, $item->cate_id]) !!}">{!! $item->name !!}</a>
+              <div class="thumbnail">
+                <span class="sale tooltip-test">Sale</span>
+                <a href="{!! route('getDetailPrd', [$item->id, $item->cate_id]) !!}"><img alt="" src="{!! asset('image/'.$item->image) !!}"></a>
 
-                        <div class="pricetag" style="margin-left:40px;">
-                          <span class="spiral"></span><a href="{!! route('addCart', [$item->id, $user_id]) !!}" class="productcart">ADD TO CART</a>
-                          <div class="price">
-                            <div class="pricenew">{!! number_format($item->price,0,',','.') !!}đ</div>
-                          </div>
-                        </div>
-                      </div>
-                    </li>
+                <div class="pricetag" style="margin-left:40px;">
+                  <span class="spiral"></span><a href="{!! route('addCart', [$item->id, $user_id]) !!}" class="productcart">ADD TO CART</a>
+                  <div class="price">
+                    <div class="pricenew">{!! number_format($item->price,0,',','.') !!}đ</div>
+                  </div>
+                </div>
+              </div>
+            </li>
 					@endforeach()
                   </ul>
                   <ul class="thumbnails list row">

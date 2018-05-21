@@ -70,13 +70,18 @@ Route::group(['prefix'=>'admin'], function(){
 
 Route::group(['prefix'=>'homesite'], function(){
 	Route::get('getPrdCate/{cate_id}', ['as'=>'getPrdCate', 'uses'=>'HomeController@getPrdCate']);
+
+	// Get all product by cate id:
 	Route::get('getAllPrdByCate/{cate_id}', ['as'=>'getAllPrdByCate', 'uses'=>'HomeController@getAllPrdByCate']);
+
+	// Detail product:
 	Route::get('getDetailPrd/{prd_id}/{cate_id}', ['as'=>'getDetailPrd', 'uses'=>'HomeController@getDetailPrd']);
 	Route::get('getMail', ['as'=>'getMail', 'uses'=>'HomeController@getMail']);
 	Route::post('postMail', ['as'=>'postMail', 'uses'=>'HomeController@postMail']);
 
 
 	Route::group(['prefix'=>'shoppingCart'], function(){
+		// Add cart:
 		Route::get('addCart/{prd_id}/{user_id}', ['as'=>'addCart', 'uses'=>'HomeController@addCart']);
 
 		// Cart info:
@@ -113,8 +118,12 @@ Route::group(['prefix'=>'homesite'], function(){
 	Route::get('login/facebook', 'HomeController@facebookRedirectToProvider');
 	Route::get('login/facebook/callback', 'HomeController@facebookHandleProviderCallback');
 
+
+	// Get search text
 	Route::post('search', ['as'=>'search', 'uses'=>'HomeController@searchPrd']);
+
+	// Get product by search str
 	Route::get('search/{text}', ['as'=>'getSearch', 'uses'=>'HomeController@getSearch']);
 
-	Route::post('filterPrd', ['as'=>'filterPrd', 'uses'=>'HomeController2@filterPrd'] );
+	// Route::post('filterPrd', ['as'=>'filterPrd', 'uses'=>'HomeController2@filterPrd'] );
 });

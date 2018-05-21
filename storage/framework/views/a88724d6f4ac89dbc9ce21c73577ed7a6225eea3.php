@@ -1,0 +1,1 @@
+This is an email test from <?php echo e($name); ?> with message : <?php echo e($msg); ?>

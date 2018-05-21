@@ -35,7 +35,7 @@
 								$mes = 'Search Here...';
 							}
 						?>
-						<input type="text" class="input-medium search-query" placeholder="<?php echo $mes; ?>" name="sText">
+						<input type="text" class="input-medium search-query" placeholder="<?php echo $mes ?>" name="sText">
 					</form>
 				</div>
 			</div>

@@ -38,18 +38,22 @@ class HomeController extends Controller
 	}
 
 	public function getPrdCate($cate_id){
+		// Get all product by cate id:
 		$prdCate = DB::table('products')->select('id', 'name', 'image', 'price', 'cate_id')
 										->where('cate_id',$cate_id)
 										->paginate(2);
 
+		// Get parent cate id by cate id:
 		$parentCate = DB::table('cates')->select('parent_id')
 										->where('id', $cate_id)
 										->first();
 
+		// Get all child cate id by parent_id:
 		$childCate = DB::table('cates')->select('name', 'id')
 									   ->where('parent_id', $parentCate->parent_id)
 									   ->get();
 
+	   	// Get latest product ny cate id:
 		$latestPrd = DB::table('products')
 							->select('id', 'name', 'price', 'image', 'cate_id')
 							->where('cate_id', $cate_id)
@@ -57,6 +61,7 @@ class HomeController extends Controller
 							->orderBy('id', 'DESC')
 							->get();
 
+		// Get cate name
 		$cateName = DB::table('cates')->select('name')
 									  ->where('id', $cate_id)
 									  ->first();
@@ -65,27 +70,32 @@ class HomeController extends Controller
 	}
 
 	public function getAllPrdByCate($cate_id){
+		// Get child cate
 		$childCates = DB::table('cates')->select('id')
 									   ->where('parent_id', $cate_id)
 									   ->get();
 
+		// get child cate id list:							   
 		foreach($childCates as $child_cate){
 			$childCateId[] =  $child_cate->id;
 		}
 
+		// get all product by child cate id					
 		$prdCate = DB::table('products')->select('id', 'name', 'price', 'image', 'cate_id')
 									->whereIn('cate_id', $childCateId)
 									->orderBy('name')
-						      ->paginate(6);
+						     		->paginate(6);
 
 		// $parentCate = DB::table('cates')->select('parent_id')
 										// ->where('id', $cate_id)
 										// ->first();
 
+		// Get child cate by id:				      
 		$childCate = DB::table('cates')->select('name', 'id')
 									   ->where('parent_id', $cate_id)
 									   ->get();
 
+		// Get latest product by child cate id: 	   
 		$latestPrd = DB::table('products')
 							->select('id', 'name', 'price', 'image', 'cate_id')
 							->whereIn('cate_id', $childCateId)
@@ -93,6 +103,7 @@ class HomeController extends Controller
 							->orderBy('id', 'DESC')
 							->get();
 
+		// Get cate name:					
 		$cateName = DB::table('cates')->select('name')
 									  ->where('id', $cate_id)
 									  ->first();
@@ -102,14 +113,17 @@ class HomeController extends Controller
 	}
 
 	public function getDetailPrd($prd_id, $cate_id){
+		// Get product info:
 		$prd = DB::table('products')->select('id', 'name', 'price', 'image', 'cate_id')
 									 ->where('id', $prd_id)
 						             ->first();
 
+        // Get detail image product: 
 		$prdDetailImg = DB::table('product_images')->select('image')
 												   ->where('product_id', $prd_id)
 												   ->get();
 
+		//Get related product:	   	
 		$relatedPrd = DB::table('products')->select('id','name', 'price','image')
 										   ->where('cate_id', $cate_id)
 										   ->where('id', '<>', $prd_id)
@@ -131,7 +145,7 @@ class HomeController extends Controller
 		$data = ['name'=>$name, 'msg'=>$msg];
 		Mail::send('user.mail.mail', $data, function($message) use($email){
 			$message->from($email, 'Client');
-			$message->to('alyssachia1992@gmail.com', 'SDerver')->subject('Test Laravel Mail');
+			$message->to('alyssachia1992@gmail.com', 'Server')->subject('Test Laravel Mail');
 		});
 	}
 
