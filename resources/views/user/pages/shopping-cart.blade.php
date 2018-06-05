@@ -35,6 +35,7 @@
           </tr>
 		  <form name="frm" method="post">
 		  <input type="hidden" name="_token" value="{!! csrf_token() !!}"/>
+      <input type="hidden" name="project_path" value="{!! url('/') !!}"/>
 			  <?php $totalBill = 0 ?>
 			  @foreach($prd_list as $item)		 
 			  <tr>

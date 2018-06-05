@@ -24,20 +24,20 @@ class CateRequest extends FormRequest
     public function rules()
     {
         return [
-            'txtCateName' => 'required|unique:cates,name',
-            'txtOrder' => 'required',
-            'txtKeywords' => 'required',
-            'txtDescription' => 'required'
+            'txtCateName' => 'required|unique:cates,name'
+            // 'txtOrder' => 'required',
+            // 'txtKeywords' => 'required',
+            // 'txtDescription' => 'required'
         ];
     }
 
 	public function messages(){
 		return [
 			'txtCateName.required' => 'Category name is required !!!',
-			'txtCateName.unique' => 'Category name is existed !!!',
-      'txtOrder.required' => 'Order name is required !!!',
-      'txtKeywords.required' => 'Keywords is required !!!',
-      'txtDescription.required' => 'Description is required !!!'
+			'txtCateName.unique' => 'Category name is existed !!!'
+            // 'txtOrder.required' => 'Order name is required !!!',
+            // 'txtKeywords.required' => 'Keywords is required !!!',
+            // 'txtDescription.required' => 'Description is required !!!'
 		];
 	}
 }

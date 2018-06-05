@@ -28,7 +28,7 @@
 				<div class="control-group">
                   <label  class="control-label"><span class="red">*</span> Username:</label>
                   <div class="controls">
-                    <input type="text" name="name" class="input-xlarge">
+                    <input type="text" name="name" class="input-xlarge" value="<?php echo (old('name') != null) ? old('name') : null  ?>">
 					@if(count($errors) > 0 && $errors->has('name'))
 					 {!! $errors->first('name', '<span style="color:red;">:message</span>') !!}
 					@endif
@@ -55,7 +55,7 @@
 				<div class="control-group">
                   <label  class="control-label"><span class="red">*</span> Email:</label>
                   <div class="controls">
-                    <input type="text" name="email" class="input-xlarge">
+                    <input type="text" name="email" class="input-xlarge" value="<?php echo (old('email') != null) ? old('email') : null  ?>">
 					@if((count($errors) >0) && ($errors->has('email')))
 					 {!! $errors->first('email', '<span style="color:red;">:message</span>') !!}
 					@endif

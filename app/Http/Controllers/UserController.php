@@ -104,7 +104,7 @@ class UserController extends Controller
   				}
   			}
         else {
-          return redirect()->route('getListUser')->with(['type'=>'alert', 'message'=>'This user is existed !!!']);
+          return redirect()->route('getListUser')->with(['type'=>'danger', 'message'=>'This user is existed !!!']);
         }
   		}
 

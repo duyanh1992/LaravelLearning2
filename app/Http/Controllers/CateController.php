@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\requests\CateRequest;
+use App\Http\Requests\CateRequest;
 use App\Cate;
+use Validator;
 
 class CateController extends Controller
 {
@@ -30,7 +31,7 @@ class CateController extends Controller
 			return redirect()->route('getListCate')->with(['message'=>'Adding cate successfully !!!', 'type'=>'success']);
 		}
 		else{ // if adding new cate is unsuccessful => send alert messages:
-			return redirect()->route('getAddCate')->with('message', 'Failed !!!');
+			return redirect()->route('getAddCate')->with(['message'=>'Failed !!!', 'type'=>'alert']);
 		}
 	}
 
@@ -80,36 +81,46 @@ class CateController extends Controller
 	public function postEditCate(Request $request, $cate_id){
     // Validate form:
 		$this->validate($request,
-			[
-        'txtCateName'=>'required|unique:cates,name',
-        'txtOrder' => 'required',
-        'txtKeywords' => 'required',
-        'txtDescription' => 'required'
-      ],
-			[
-				'txtCateName.required'=>'cate name is required !!!',
-				'txtCateName.unique'=>'cate name is existed !!!',
-        'txtOrder.required' => 'Order name is required !!!',
-        'txtKeywords.required' => 'Keywords is required !!!',
-        'txtDescription.required' => 'Description is required !!!'
-			]
-		);
+		[
+			'txtCateName'=>'required'
+		],
+		[
+
+			'txtCateName.required'=>'cate name is required !!!',
+		]);
 
     // Editing category:
+
+
 		$editcate = Cate::find($cate_id);
-    if (count($editcate) > 0) {
-      $editcate->name = $request->txtCateName;
-  		$editcate->alias = $request->txtCateName;
-  		$editcate->order = $request->txtOrder;
-  		$editcate->parent_id = $request->sltCate;
-  		$editcate->keywords = $request->txtKeywords;
-  		$editcate->description = $request->txtCateName;
-  		if($editcate->save()){
-  			return redirect()->route('getListCate')->with(['message'=>'Editing cate successfully !!!', 'type'=>'success']);
-  		}
-  		else{
-  			return redirect()->route('getEditCate')->with('message', 'Failed !!!');
-  		}
-    }
+	    if (count($editcate) > 0) {
+    		$checkCateName = Cate::select('id')
+    								->where('name', $request->txtCateName)
+    								->where('id','<>', $cate_id)
+    								->first();
+    								
+			// var_dump($checkCateName);
+			// die();
+
+	    	if (count($checkCateName) > 0) {
+	    		return redirect()->back()->with(['message'=>'Cate name is existed !!!', 'type'=>'danger']);
+	    	}
+
+	    	else{
+	    		$editcate->name = $request->txtCateName;
+		  		$editcate->alias = $request->txtCateName;
+		  		$editcate->order = $request->txtOrder;
+		  		$editcate->parent_id = $request->sltCate;
+		  		$editcate->keywords = $request->txtKeywords;
+		  		$editcate->description = $request->txtCateName;
+
+		  		if($editcate->save()){
+		  			return redirect()->route('getListCate')->with(['message'=>'Editing cate successfully !!!', 'type'=>'success']);
+		  		}
+		  		else{
+		  			return redirect()->route('getListCate')->with(['message'=>'Failed !!!', 'type'=>'alert']);
+		  		}
+	    	}	
+	    }
 	}
 }

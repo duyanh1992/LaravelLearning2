@@ -32,11 +32,13 @@
 		</div>
 		<div class="form-group">
 			<label>Name</label>
-			<input class="form-control" name="txtName" placeholder="Please Enter Username" value="<?php echo old('txtName', (old('txtName') != null) ? old('txtName') : null); ?>"/><p style="color:red"><?php echo isset($errors) ? $errors->first('txtName') : null; ?></p>
+			<input class="form-control" name="txtName" placeholder="Please Enter Username" value="<?php echo old('txtName', (old('txtName') != null) ? old('txtName') : null); ?>"/>
+			<p style="color:red"><?php echo isset($errors) ? $errors->first('txtName') : null; ?></p>
 		</div>
 		<div class="form-group">
 			<label>Price</label>
-			<input class="form-control" name="txtPrice" placeholder="Please Enter Password" value="<?php echo old('txtPrice', (old('txtPrice') != null) ? old('txtPrice') : null); ?>"/><p style="color:red"><?php echo isset($errors) ? $errors->first('txtPrice') : null; ?></p>
+			<input class="form-control" name="txtPrice" placeholder="Please Enter Password" value="<?php echo old('txtPrice', (old('txtPrice') != null) ? old('txtPrice') : null); ?>"/>
+			<p style="color:red"><?php echo isset($errors) ? $errors->first('txtPrice') : null; ?></p>
 		</div>
 		<div class="form-group">
 			<label>Intro</label>

@@ -34,6 +34,7 @@
           </tr>
 		  <form name="frm" method="post">
 		  <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>"/>
+      <input type="hidden" name="project_path" value="<?php echo url('/'); ?>"/>
 			  <?php $totalBill = 0 ?>
 			  <?php $__currentLoopData = $prd_list; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>		 
 			  <tr>

@@ -1,15 +1,18 @@
 <?php $__env->startSection('pageHeader', 'Cate'); ?>
 <?php $__env->startSection('function', 'Edit'); ?>
 <?php $__env->startSection('content'); ?>
-<div class="col-lg-7" style="padding-bottom:120px">
-	<?php echo $__env->make('admin.blocks.validation_error', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<div class="col-lg-7" style="padding-bottom:120px">	
+	<!-- Show alert message  -->
+	<?php echo $__env->make('admin.blocks.message', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+	<!-- End show alert message -->
 	<form action="<?php echo route('postEditCate', $getCateById->id); ?>" method="POST">
 	<input type="hidden" name="_token" value="<?php echo csrf_token(); ?>"/>
 		<div class="form-group">
 			<label>Category Parent</label>
 			<select class="form-control" name="sltCate">
 				<option value="0">Please Choose Category</option>
-				<?php 
+				<?php
+					// Show category select box:
 					parentCate($getListCate, 0, '', $parent_id);
 				?>
 			</select>
@@ -17,6 +20,7 @@
 		<div class="form-group">
 			<label>Category Name</label>
 			<input class="form-control" name="txtCateName" placeholder="Please Enter Category Name" value="<?php echo old('txtCateName', isset($getCateById->name) ? $getCateById->name : null); ?>"/>
+			<p style="color:red"><?php echo isset($errors) ? $errors->first('txtCateName') : null; ?></p>
 		</div>
 		<div class="form-group">
 			<label>Category Order</label>

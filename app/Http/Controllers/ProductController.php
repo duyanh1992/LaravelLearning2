@@ -36,6 +36,7 @@ class ProductController extends Controller
 			[
 				'sltPrd.required'=>'Product cate is required !!!',
 				'txtName.required'=>'Product name is required !!!',
+        'txtName.unique'=>'Product name is existed !!!',
 				'sltPrd.unique'=>'This product name is existed !!!',
 				'txtPrice.required'=>'Product price is required !!!',
 				'fImages.required'=>'Product image is required !!!',
@@ -251,15 +252,19 @@ class ProductController extends Controller
   		if($request->hasFile('fImages')){
   			//Get file:
   			$file = $request->file('fImages');
+        // echo "<pre>";
+        // print_r($file);
+        // echo "</pre>";
 
   			//Get file name
-  			$fileName = $file->getClientOriginalName('fImages');
+        $fileName = $file->getClientOriginalName('fImages');
 
   			//Insert the new file name into DB:
   			$editPrd->image = $fileName;
 
   			//Upload the new file into server:
   			$imgFolder = public_path('image');
+
   			$file->move($imgFolder, $fileName);
 
   			//Check if there's an old file:

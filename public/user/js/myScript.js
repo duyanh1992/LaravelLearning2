@@ -1,5 +1,7 @@
 $(function(){
-	// Update shopping cart:
+	var baseURL = $('input[name=project_path]').val();
+	//alert(baseURL);
+	//Update shopping cart:
 	$('input[name=quantity]').keyup(function(){
 		//Get new quantity value;
 		var newQty = parseInt($(this).val());
@@ -15,11 +17,12 @@ $(function(){
 
 		// Send ajax:
 		$.ajax({
-			url: 'http://localhost/LaravelLearning2/public/homesite/shoppingCart/getEditCart',
+			url: baseURL+'/homesite/shoppingCart/getEditCart',
 			data: {'qty':newQty, 'rowId':rowId, 'tokenForm':tokenForm},
 			success: function(res){
+				console.log(res);
 				if(res == 'ok'){
-					window.location = "http://localhost/LaravelLearning2/public/homesite/shoppingCart/getCartInfo/"+userId;
+					window.location = baseURL+"/homesite/shoppingCart/getCartInfo/"+userId;
 				}
 			}
 		});

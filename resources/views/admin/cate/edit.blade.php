@@ -3,7 +3,13 @@
 @section('function', 'Edit')
 @section('content')
 <div class="col-lg-7" style="padding-bottom:120px">
+	<!-- Begin show the error message -->
 	@include('admin.blocks.validation_error')
+	<!-- End show the error message -->
+
+	<!-- Show alert message  -->
+	@include('admin.blocks.message')
+	<!-- End show alert message -->
 	<form action="{!! route('postEditCate', $getCateById->id) !!}" method="POST">
 	<input type="hidden" name="_token" value="{!! csrf_token() !!}"/>
 		<div class="form-group">
@@ -19,6 +25,7 @@
 		<div class="form-group">
 			<label>Category Name</label>
 			<input class="form-control" name="txtCateName" placeholder="Please Enter Category Name" value="{!! old('txtCateName', isset($getCateById->name) ? $getCateById->name : null) !!}"/>
+			<p style="color:red">{!! isset($errors) ? $errors->first('txtCateName') : null !!}</p>
 		</div>
 		<div class="form-group">
 			<label>Category Order</label>

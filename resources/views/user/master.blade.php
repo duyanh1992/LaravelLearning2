@@ -31,6 +31,10 @@ if(!isset($_SESSION)){
     <![endif]-->
 <!-- fav -->
 <link rel="shortcut icon" href="assets/ico/favicon.ico">
+
+<script>
+  var baseURL = "{!! url('/') !!}";
+</script>
 </head>
 <body>
 <!-- Header Start -->

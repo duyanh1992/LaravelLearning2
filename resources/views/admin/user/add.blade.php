@@ -20,12 +20,12 @@
 		</div>
 		<div class="form-group">
 			<label>Password</label>
-			<input type="password" class="form-control" name="txtPass" placeholder="Please Enter Password" value="{!! old('txtPass') !!}"/>
+			<input type="password" class="form-control" name="txtPass" placeholder="Please Enter Password" />
 			<p style="color:red">{!! isset($errors) ? $errors->first('txtPass') : null !!}</p>
 		</div>
 		<div class="form-group">
 			<label>RePassword</label>
-			<input type="password" class="form-control" name="txtRePass" placeholder="Please Enter RePassword" value="{!! old('txtRePass') !!}"/>
+			<input type="password" class="form-control" name="txtRePass" placeholder="Please Enter RePassword"/>
 			<p style="color:red">{!! isset($errors) ? $errors->first('txtRePass') : null !!}</p>
 		</div>
 		<div class="form-group">

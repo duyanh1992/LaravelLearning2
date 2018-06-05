@@ -29,8 +29,10 @@ class LoginController extends Controller
 		);
 
 		// Start logging in:
-		$name = $request->username;
-		$pass = $request->password;
+		 $name = $request->username;
+		//echo "<br />";
+		 $pass = $request->password;
+		//die();
 			//Create login data
 		$loginData = array('username'=>$name, 'password'=>$pass, 'level'=>1);
 		if(Auth::attempt($loginData)){		// If login data is correct -> user could go into admin portal (attach message)

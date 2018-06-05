@@ -15,7 +15,7 @@ function delConfirm(){
 // Deleting product image:
 $('.imgDelBtn').click(function(){
 	// Set url:
-	var url = 'http://localhost/LaravelLearning2/public/admin/admin-content/product/delDetailImg/';
+	var url = baseURL+'/admin/admin-content/product/delDetailImg/';
 	// Set token:
 	var token = $('#editPrdFrm input[name=_token]').val();
 

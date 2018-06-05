@@ -14,4 +14,8 @@ function parentCate($arr, $parent_id=0, $add='', $select=0){
 		}
 	}
 }
+
+function ramdomString(){
+	
+}
 ?>

@@ -19,12 +19,12 @@
 		</div>
 		<div class="form-group">
 			<label>Password</label>
-			<input type="password" class="form-control" name="txtPass" placeholder="Please Enter Password" value="<?php echo old('txtPass'); ?>"/>
+			<input type="password" class="form-control" name="txtPass" placeholder="Please Enter Password" />
 			<p style="color:red"><?php echo isset($errors) ? $errors->first('txtPass') : null; ?></p>
 		</div>
 		<div class="form-group">
 			<label>RePassword</label>
-			<input type="password" class="form-control" name="txtRePass" placeholder="Please Enter RePassword" value="<?php echo old('txtRePass'); ?>"/>
+			<input type="password" class="form-control" name="txtRePass" placeholder="Please Enter RePassword"/>
 			<p style="color:red"><?php echo isset($errors) ? $errors->first('txtRePass') : null; ?></p>
 		</div>
 		<div class="form-group">

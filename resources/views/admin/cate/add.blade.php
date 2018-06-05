@@ -26,6 +26,7 @@
 		<div class="form-group">
 			<label>Category Name</label>
 			<input class="form-control" name="txtCateName" placeholder="Please Enter Category Name" value="<?php echo old('txtCateName')!=null ? old('txtCateName') : null ?>"/>
+			<p style="color:red">{!! isset($errors) ? $errors->first('txtCateName') : null !!}</p>
 		</div>
 		<div class="form-group">
 			<label>Category Order</label>

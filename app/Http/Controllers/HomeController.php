@@ -198,7 +198,7 @@ class HomeController extends Controller
 		$user->username = $request->name;
 		$user->password = Hash::make($request->password);
 		$user->email = $request->email;
-		$user->level = 1;
+		$user->level = 2;
 		$user->remember_token = ($request->_token).Hash::make($request->password);
 
 		if($user->save()){
@@ -212,7 +212,7 @@ class HomeController extends Controller
 	public function postUserLogin(Request $request){
 		$v = Validator::make($request->all(),[
 			'email'=>'required|email',
-			'password'=>'required|max:4'
+			'password'=>'required'
 		],
 		[
 
@@ -223,6 +223,7 @@ class HomeController extends Controller
 
 		// If there are validation errors, move user back to login page and attach errors message:
 		$errors = $v->errors();
+		
 		if(count($errors) > 0){
 			return redirect()->route('getUserLogin')->with(compact('errors'));
 		}
@@ -323,7 +324,7 @@ class HomeController extends Controller
 			$addUser->username = $name;
 			$addUser->email = $email;
 			$addUser->password = $password;
-			$addUser->level = 1;
+			$addUser->level = 2;
 			$addUser->remember_token = substr($token, 0, 10);
 			if($addUser->save()){	// If adding user is ok, save user name and user is into session : 
 				$_SESSION['social_name'] = $name;
@@ -353,10 +354,6 @@ class HomeController extends Controller
     	// Get user info from facebook:
         $user = Socialite::driver('facebook')->user();
 
-		// echo "<pre>";
-		// print_r($user);
-		// echo "</pre>";
-
 		$name = $user->name;
 		$email = $user->email;
 		$password = $user->id;
@@ -371,7 +368,7 @@ class HomeController extends Controller
 			$addUser->username = $name;
 			$addUser->email = $email;
 			$addUser->password = $password;
-			$addUser->level = 1;
+			$addUser->level = 2;
 			$addUser->remember_token = substr($token, 0, 10);
 			if($addUser->save()){   // If adding user is ok, save user name 
 				$_SESSION['social_name'] = $name;
